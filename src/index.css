@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* ARISTEIA Color System */
+    --charcoal: 216 24% 8%;
+    --off-white: 210 20% 98%;
+    --accent-blue: 217 86% 53%;
+    --charcoal-light: 216 20% 15%;
+    --blue-hover: 217 78% 44%;
+
+    --background: var(--charcoal);
+    --foreground: var(--off-white);
+
+    --card: var(--charcoal-light);
+    --card-foreground: var(--off-white);
+
+    --popover: var(--charcoal-light);
+    --popover-foreground: var(--off-white);
+
+    --primary: var(--accent-blue);
+    --primary-foreground: var(--off-white);
+
+    --secondary: var(--charcoal-light);
+    --secondary-foreground: var(--off-white);
+
+    --muted: var(--charcoal-light);
+    --muted-foreground: 210 15% 65%;
+
+    --accent: var(--accent-blue);
+    --accent-foreground: var(--off-white);
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: var(--off-white);
+
+    --border: 216 20% 20%;
+    --input: 216 20% 20%;
+    --ring: var(--accent-blue);
+
+    --radius: 0.5rem;
+    
+    /* Custom gradients */
+    --gradient-dark: linear-gradient(135deg, hsl(var(--charcoal)) 0%, hsl(var(--charcoal-light)) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(var(--accent-blue)) 0%, hsl(var(--blue-hover)) 100%);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode uses same tokens */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
