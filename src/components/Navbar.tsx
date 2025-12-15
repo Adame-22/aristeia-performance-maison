@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, X, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth } from "@/contexts/AuthContext";
@@ -7,6 +8,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { authState } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +29,11 @@ const Navbar = () => {
 
   const handleNavigation = (href: string, isPage: boolean = false) => {
     if (isPage) {
-      window.location.href = href;
+      navigate(href);
     } else {
       // Si on n'est pas sur la homepage, rediriger vers homepage avec hash
       if (window.location.pathname !== '/') {
-        window.location.href = `/#${href}`;
+        navigate(`/#${href}`);
       } else {
         scrollToSection(href);
       }
@@ -49,9 +52,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -61,7 +63,7 @@ const Navbar = () => {
               if (window.location.pathname === '/') {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               } else {
-                window.location.href = '/';
+                navigate('/');
               }
             }}
             className="font-display text-2xl md:text-3xl tracking-wider hover:text-primary transition-colors"
@@ -84,7 +86,7 @@ const Navbar = () => {
               <Button
                 variant="outline"
                 size="default"
-                onClick={() => window.location.href = "/compte"}
+                onClick={() => navigate("/compte")}
               >
                 <User className="mr-2 h-4 w-4" />
                 {authState.user?.user_metadata?.full_name || authState.user?.email?.split("@")[0] || "Mon compte"}
@@ -93,7 +95,7 @@ const Navbar = () => {
               <Button
                 variant="cta-primary"
                 size="default"
-                onClick={() => window.location.href = "/connexion"}
+                onClick={() => navigate("/connexion")}
               >
                 Connexion
               </Button>
@@ -128,7 +130,7 @@ const Navbar = () => {
                   variant="outline"
                   size="default"
                   className="w-full"
-                  onClick={() => window.location.href = "/compte"}
+                  onClick={() => navigate("/compte")}
                 >
                   <User className="mr-2 h-4 w-4" />
                   {authState.user?.user_metadata?.full_name || authState.user?.email?.split("@")[0] || "Mon compte"}
@@ -138,7 +140,7 @@ const Navbar = () => {
                   variant="cta-primary"
                   size="default"
                   className="w-full"
-                  onClick={() => window.location.href = "/connexion"}
+                  onClick={() => navigate("/connexion")}
                 >
                   Connexion
                 </Button>
