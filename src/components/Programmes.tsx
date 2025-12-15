@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -50,9 +51,12 @@ const programs = [
 ];
 
 const Programmes = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="programmes" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ... keep headers ... */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl mb-6 tracking-tight">
             LA MÉTHODE <span className="text-primary">ARISTEIA</span>
@@ -66,11 +70,10 @@ const Programmes = () => {
           {programs.map((program, index) => (
             <div
               key={index}
-              className={`bg-card rounded-lg p-8 flex flex-col ${
-                program.highlight
-                  ? "border-2 border-primary shadow-xl scale-105 lg:scale-110"
-                  : "border border-border"
-              } hover:border-primary transition-all duration-300`}
+              className={`bg-card rounded-lg p-8 flex flex-col ${program.highlight
+                ? "border-2 border-primary shadow-xl scale-105 lg:scale-110"
+                : "border border-border"
+                } hover:border-primary transition-all duration-300`}
             >
               {program.highlight && (
                 <div className="bg-primary text-primary-foreground text-sm font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-4 w-fit">
@@ -98,18 +101,16 @@ const Programmes = () => {
                   variant="cta-primary"
                   size="lg"
                   className="w-full"
-                  asChild
+                  onClick={() => navigate(`/candidature?programme=${program.name.toLowerCase()}`)}
                 >
-                  <a href={`/candidature?programme=${program.name.toLowerCase()}`}>
-                    Postuler
-                  </a>
+                  Postuler
                 </Button>
-                <a
-                  href="/programmes"
-                  className="block text-center text-primary hover:text-blue-hover text-sm font-semibold pt-2 transition-colors"
+                <button
+                  onClick={() => navigate("/programmes")}
+                  className="block w-full text-center text-primary hover:text-blue-hover text-sm font-semibold pt-2 transition-colors"
                 >
                   Détails de l'offre →
-                </a>
+                </button>
               </div>
             </div>
           ))}

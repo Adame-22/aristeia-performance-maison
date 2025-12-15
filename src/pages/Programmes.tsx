@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -52,10 +53,12 @@ const programmes = [
 ];
 
 const Programmes = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      
+
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -65,11 +68,11 @@ const Programmes = () => {
                 { label: "Programmes" },
               ]}
             />
-            
+
             <h1 className="font-display text-5xl md:text-6xl text-center mb-6 tracking-tight">
               LA MÉTHODE <span className="text-primary">ARISTEIA</span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-foreground/80 text-center mb-16 leading-relaxed max-w-3xl mx-auto">
               Une architecture de performance en 3 phases.
             </p>
@@ -89,14 +92,14 @@ const Programmes = () => {
                       <p className="text-primary font-semibold text-xl mb-4">{program.subtitle}</p>
                       <p className="text-foreground/80 mb-6 leading-relaxed">{program.description}</p>
                       <p className="font-display text-xl text-muted-foreground mb-6">{program.price}</p>
-                      <a
-                        href={`/candidature?programme=${program.id}`}
+                      <button
+                        onClick={() => navigate(`/candidature?programme=${program.id}`)}
                         className="inline-block px-6 py-3 bg-primary hover:bg-blue-hover text-white font-semibold rounded-md transition-colors"
                       >
                         Postuler
-                      </a>
+                      </button>
                     </div>
-                    
+
                     <div className="flex-1">
                       <h3 className="font-semibold text-lg mb-4">Ce qui est inclus :</h3>
                       <ul className="space-y-3">
@@ -117,12 +120,12 @@ const Programmes = () => {
               <p className="text-foreground/80 mb-6">
                 Prêt à commencer votre transformation ?
               </p>
-              <a
-                href="/candidature"
+              <button
+                onClick={() => navigate("/candidature")}
                 className="inline-block px-8 py-4 bg-primary hover:bg-blue-hover text-white font-semibold rounded-md transition-colors"
               >
                 Postuler maintenant
-              </a>
+              </button>
             </div>
           </div>
         </div>
