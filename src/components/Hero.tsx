@@ -28,7 +28,7 @@ const Hero = () => {
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-foreground/90 mb-4 max-w-2xl mx-auto font-medium">
             La Maison de la Performance à Genève.<br />
-            Donnons-nous enfin les moyens. Atteins ton sommet (v2.2).
+            Donnons-nous enfin les moyens. Atteins ton sommet (v2.3).
           </p>
           <p className="text-base sm:text-lg md:text-xl text-primary font-semibold mb-10 max-w-2xl mx-auto">
             Séances illimitées pour tous les membres.
