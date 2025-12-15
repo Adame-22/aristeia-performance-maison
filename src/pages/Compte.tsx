@@ -18,9 +18,9 @@ const Compte = () => {
     navigate("/connexion");
   };
 
-  const userName = authState.user?.user_metadata?.full_name || 
-                   authState.user?.email?.split("@")[0] || 
-                   "Membre Aristeia";
+  const userName = authState.user?.user_metadata?.full_name ||
+    authState.user?.email?.split("@")[0] ||
+    "Membre Aristeia";
 
   // Mock event data
   const events = [
@@ -81,8 +81,8 @@ const Compte = () => {
                       <span className="font-semibold">15/02/2026</span>
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full mt-4" asChild>
-                    <a href="/abonnement">Modifier mon abonnement</a>
+                  <Button variant="outline" className="w-full mt-4" onClick={() => navigate("/abonnement")}>
+                    Modifier mon abonnement
                   </Button>
                 </CardContent>
               </Card>
@@ -93,30 +93,22 @@ const Compte = () => {
                   <CardDescription>Raccourcis utiles</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="/programmes">
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Voir les programmes
-                    </a>
+                  <Button variant="outline" className="w-full justify-start" onClick={() => navigate("/programmes")}>
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Voir les programmes
                   </Button>
-                  <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="/profil">
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Mon Profil
-                    </a>
+                  <Button variant="outline" className="w-full justify-start" onClick={() => navigate("/profil")}>
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Mon Profil
                   </Button>
-                  <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="/evenements">
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Événements à venir
-                    </a>
+                  <Button variant="outline" className="w-full justify-start" onClick={() => navigate("/evenements")}>
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Événements à venir
                   </Button>
                   {authState.isAdmin && (
-                    <Button variant="outline" className="w-full justify-start" asChild>
-                      <a href="/admin">
-                        <Shield className="mr-2 h-4 w-4" />
-                        Accès Admin
-                      </a>
+                    <Button variant="outline" className="w-full justify-start" onClick={() => navigate("/admin")}>
+                      <Shield className="mr-2 h-4 w-4" />
+                      Accès Admin
                     </Button>
                   )}
                 </CardContent>

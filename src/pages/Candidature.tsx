@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -49,7 +49,7 @@ const Candidature = () => {
   const [searchParams] = useSearchParams();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const programmeFromUrl = searchParams.get("programme") || "";
 
   const form = useForm<CandidatureFormData>({
@@ -77,7 +77,7 @@ const Candidature = () => {
 
   const onSubmit = async (data: CandidatureFormData) => {
     setIsSubmitting(true);
-    
+
     try {
       // Insert candidature and get the created record ID
       const { data: insertedData, error } = await supabase
@@ -109,12 +109,12 @@ const Candidature = () => {
         console.error("Email notification error:", emailError);
         // Don't fail the submission if email fails
       }
-      
+
       toast({
         title: "Candidature envoyée !",
         description: "Nous reviendrons vers vous dans les plus brefs délais.",
       });
-      
+
       setIsSubmitted(true);
     } catch (error) {
       console.error("Erreur lors de l'envoi:", error);
@@ -141,11 +141,11 @@ const Candidature = () => {
                   Candidature envoyée !
                 </h1>
                 <p className="text-foreground/80 mb-8">
-                  Merci pour votre intérêt envers Aristeia. Nous analyserons votre profil 
+                  Merci pour votre intérêt envers Aristeia. Nous analyserons votre profil
                   et reviendrons vers vous dans les plus brefs délais.
                 </p>
                 <Button asChild>
-                  <a href="/">Retour à l'accueil</a>
+                  <Link to="/">Retour à l'accueil</Link>
                 </Button>
               </div>
             </div>
@@ -159,7 +159,7 @@ const Candidature = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      
+
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -170,13 +170,13 @@ const Candidature = () => {
                 { label: "Candidature" },
               ]}
             />
-            
+
             <h1 className="font-display text-4xl md:text-5xl text-center mb-4 tracking-tight">
               CANDIDATURE <span className="text-primary">ARISTEIA</span>
             </h1>
-            
+
             <p className="text-lg text-foreground/80 text-center mb-12 max-w-2xl mx-auto">
-              Rejoignez la Méthode Aristeia. Remplissez ce formulaire pour que nous puissions 
+              Rejoignez la Méthode Aristeia. Remplissez ce formulaire pour que nous puissions
               évaluer votre profil et vous orienter vers le programme adapté.
             </p>
 
@@ -326,10 +326,10 @@ const Candidature = () => {
                           <FormItem>
                             <FormLabel>Quels sont vos objectifs ?</FormLabel>
                             <FormControl>
-                              <Textarea 
+                              <Textarea
                                 placeholder="Décrivez vos objectifs à court et long terme (force, compétition, santé, esthétique...)"
                                 className="min-h-[100px]"
-                                {...field} 
+                                {...field}
                               />
                             </FormControl>
                             <FormMessage />
@@ -343,10 +343,10 @@ const Candidature = () => {
                           <FormItem>
                             <FormLabel>Votre parcours sportif</FormLabel>
                             <FormControl>
-                              <Textarea 
+                              <Textarea
                                 placeholder="Décrivez votre expérience en musculation/powerlifting, vos PR actuels, blessures éventuelles..."
                                 className="min-h-[100px]"
-                                {...field} 
+                                {...field}
                               />
                             </FormControl>
                             <FormMessage />
@@ -368,10 +368,10 @@ const Candidature = () => {
                         <FormItem>
                           <FormLabel>Vos disponibilités pour vous entraîner</FormLabel>
                           <FormControl>
-                            <Textarea 
+                            <Textarea
                               placeholder="Ex: 4x par semaine, matin et soir disponibles, week-ends libres..."
                               className="min-h-[80px]"
-                              {...field} 
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -392,10 +392,10 @@ const Candidature = () => {
                         <FormItem>
                           <FormLabel>Pourquoi Aristeia ?</FormLabel>
                           <FormControl>
-                            <Textarea 
+                            <Textarea
                               placeholder="Expliquez pourquoi vous souhaitez rejoindre Aristeia et ce qui vous motive dans votre démarche..."
                               className="min-h-[120px]"
-                              {...field} 
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
