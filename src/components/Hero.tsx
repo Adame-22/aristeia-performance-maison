@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -37,10 +39,10 @@ const Hero = () => {
             <Button
               variant="cta-primary"
               size="lg"
-              onClick={() => scrollToSection("programmes")}
-              className="text-base md:text-lg px-8 py-6"
+              onClick={() => navigate("/app")}
+              className="text-base md:text-lg px-8 py-6 font-bold"
             >
-              Découvrir la Méthode
+              Lancer l'Application PaaS
             </Button>
             <Button
               variant="cta-secondary"

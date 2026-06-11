@@ -100,6 +100,14 @@ const Navbar = () => {
                 Connexion
               </Button>
             )}
+            <Button
+              variant="default"
+              size="default"
+              onClick={() => navigate("/app")}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
+            >
+              Lancer l'App PaaS
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -145,6 +153,14 @@ const Navbar = () => {
                   Connexion
                 </Button>
               )}
+              <Button
+                variant="default"
+                size="default"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
+                onClick={() => navigate("/app")}
+              >
+                Lancer l'App PaaS
+              </Button>
             </div>
           </div>
         )}

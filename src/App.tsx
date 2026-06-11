@@ -22,6 +22,7 @@ import Compte from "./pages/Compte";
 import Abonnement from "./pages/Abonnement";
 import Admin from "./pages/Admin";
 import Profil from "./pages/Profil";
+import DashboardApp from "./pages/DashboardApp";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,8 @@ const App = () => (
             <Route path="/profil" element={<Profil />} />
             <Route path="/abonnement" element={<Abonnement />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/app" element={<DashboardApp />} />
+            <Route path="/dashboard" element={<DashboardApp />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
